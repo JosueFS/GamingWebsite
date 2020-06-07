@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+
+:root{
+    /* Paleta de Cores */
+    --primaryColor: rgb(29, 29, 29);
+    --secondColor: rgb(59, 59, 59);
+    --thirdColor: rgb(90, 90, 90);
+    --fourthColor: rgb(182, 182, 182);
+    --detailColor: rgb(153, 104, 104);
+    --bgGrayTransp: #0000007a;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Montserrat', Asap, Tahoma, sans-serif;
+    background: no-repeat center top ;
+    background-size: 1920px 1080px;
+    color: var(--detailColor);
+    transition:  0.05s;
+}
+
+#root {
+    background: var(--bgGrayTransp);
+    width: 100vw;
+    height: 100vh;
+}

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Belt Slider</title>
+    <style>
+        .container{
+            max-width: 600px;
+        }
+        .game-list{
+            width: 500%;
+            position: relative;
+            display: flex;
+            flex-direction: row;
+            transform: translate3d(0, 0, 0);
+            transform: translateX(-420px);
+            list-style-type: none;
+        }
+
+        .game-item {
+            width: 200px;
+            margin-right: 10px;
+        }
+
+        .game-item img{
+            width: 200px;
+            border-radius: 5px;
+        }
+        .container span{
+            cursor: pointer;
+            padding: 10px;
+            background-color: rgb(138, 222, 255);
+            border: rgb(0, 119, 255) solid 2px;
+            border-radius: 10px;
+            margin-left: 40px;
+        }
+    </style>
+</head>
+<body>
+    <h1>GAME LIST</h1>
+    <div class="container">
+        <ul class="game-list">
+            <li class="game-item">
+                <img src="https://media.rawg.io/media/crop/600/400/games/bc7/bc7e583a6e4ceec38f0557cf8910da1f.jpg" alt="game" />
+            </li>
+            <li class="game-item">
+                <img src="https://media.rawg.io/media/crop/600/400/games/415/41563ce6cb061a210160687a4e5d39f6.jpg" alt="game" />
+            </li>
+            <li class="game-item">
+                <img src="https://media.rawg.io/media/crop/600/400/games/f24/f2493ea338fe7bd3c7d73750a85a0959.jpeg" alt="game" />
+            </li>
+            <li class="game-item">
+                <img src="https://media.rawg.io/media/crop/600/400/games/fad/fad7d0ac5e4cc8f80ebd44b16e4ede2d.jpg" alt="game" />
+            </li>
+            <li class="game-item">
+                <img src="https://media.rawg.io/media/crop/600/400/games/718/71891d2484a592d871e91dc826707e1c.jpg" alt="game" />
+            </li>
+            <!-- <li class="game-item">
+                <img src="https://media.rawg.io/media/crop/600/400/games/2e1/2e10f56f6fb99a791c19999ff3d34e7a.jpg" alt="game" />
+            </li>
+            <li class="game-item">
+                <img src="https://media.rawg.io/media/crop/600/400/games/d89/d89bd0cf4fcdc10820892980cbba0f49.jpg" alt="game" />
+            </li> -->
+        </ul>
+        <span id="prev">Prev</span>
+        <span id="next">Next</span>
+    </div>
+    <script>
+        const elementsWidth = 210;
+        itemWidth = -420;
+        
+        list = document.querySelector('.game-list');
+        listItems = document.querySelectorAll('.game-item');
+
+        resetPosition = Math.ceil(listItems.length - (document.querySelector('html').offsetWidth / elementsWidth ));
+
+        for (item of listItems) {
+            list.appendChild(item.cloneNode(true));
+        }
+
+        function onHandleClick(e){
+            move = {
+                prev: () => {
+                    if (itemWidth == -elementsWidth){
+                    itemWidth = -(elementsWidth * listItems.length);
+                    list.style.transform = `translateX(${itemWidth}px)`;
+                    return;
+                    }
+
+                    itemWidth += elementsWidth;
+                    list.style.transform = `translateX(${itemWidth}px)`;
+                },
+                next: () => {
+                    if (itemWidth == -1890){
+                        itemWidth = -(resetPosition * elementsWidth);
+                        list.style.transform = `translateX(${itemWidth}px)`;
+                        return;
+                    }
+                    
+                    
+                    itemWidth -= elementsWidth;
+                    list.style.transform = `translateX(${itemWidth}px)`;
+                },
+            };
+            
+            move[e.target.id]();
+
+        }
+
+        prev = document.querySelector('#prev');
+        next = document.querySelector('#next');
+        
+        prev.addEventListener('click', onHandleClick);
+        next.addEventListener('click', onHandleClick);
+        
+    </script>
+</body>

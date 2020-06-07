@@ -1,0 +1,21 @@
+* New Page [
+		- Game Description [ Name, Platforms, Release Date, Developers, Official Website, Rank By First Genre ],
+		- Filters,
+		- Sign Up/Sign In,
+		- Favorite Games
+]
+
+* Recommendation Degree (With minimal count)
+
+* Video on hover img (Maybe)
+
+* Available Platforms
+
+* Drag list with Mouse (If use Infinite List "load more")
+
+* Button back to first (If use pagination)
+
+* Game Detail [
+		- Function to load game details calling API
+		- 
+]

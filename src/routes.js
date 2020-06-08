@@ -1,8 +1,8 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
-import Main from './pages/main/index';
-import Game from './pages/game';
+import Main from './pages/Main/index';
+import Detail from './pages/Detail';
 import Header from './components/Header';
 
 const Routes = () => (
@@ -12,7 +12,7 @@ const Routes = () => (
         </Header>
         <Switch>
             <Route exact path='/' component={Main} />
-            <Route path='/games/:id' component={Game} />
+            <Route path='/detail' component={Detail} />
         </Switch>
     </BrowserRouter>   
 );

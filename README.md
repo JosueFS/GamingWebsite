@@ -2,13 +2,6 @@
 ### Project under development :construction:
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-
-## Follow This Amazing Design
-# :video_game:Unamed Gaming Website
-### Project under development :construction:
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-
 ## Follow This Amazing Design
 [![Dribbble Personal](https://img.shields.io/badge/Dribbble-Andrew%20Sereda-ea4c89?style=for-the-badge&logo=Dribbble)](https://dribbble.com/andrewsereda)
 [![Dribble Concept](https://img.shields.io/badge/ConceptArt-Playstation%205-006fcd?style=for-the-badge&logo=PlayStation)](https://dribbble.com/shots/11117563-PlayStation-5-Dashboard-Concept)

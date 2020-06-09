@@ -18,87 +18,48 @@ export default function Game(){
         defaultBG: 'http://oiguassu.com.br/wp-content/themes/fox/images/placeholder.jpg'
     }
 
-    function translateEffect(game){
+    function translateEffect(li, article){
+
+        let elementsHeight = 107;
         let elementsWidth = 180;
 
-        let list = document.querySelector('#game-list');
-        let itemIndex = Array.from(list.children).indexOf(game)
+        let gameList = document.querySelector('#game-list');
+        let gameIndex = Array.from(gameList.children).indexOf(li)
 
-        list.style.transform = `translateX(-${itemIndex * elementsWidth}px)`;
+        gameList.style.transform = `translateX(-${gameIndex * elementsWidth}px)`;
+
+        let infoList = document.querySelector('#info-preview');
+        let infoIndex = Array.from(infoList.children).indexOf(article);
+        
+        infoList.style.transform = `translateY(-${infoIndex * elementsHeight}px)`;
     }
 
-    function setBg(gameId){
+    function changeBg(gameId){
         let [t] = games.filter( (g) => (g.id === Number(gameId)));
         document.body.style.backgroundImage = `url(${t.short_screenshots[1].image})`;
     }
     
-    function handleSelectGame(gameId){
-        let elementsHeight = 107;
-        
-        setSelectedGame(gameId);
-
-        if (gameId === selectedGame){
-            translateEffect(gameId);
-            setBg(gameId);
-            console.log(gameId);
-
-            //Hiding all game info
-            // let oldSelected = document.querySelector('article.selected');
-            // let oldLiSelected = document.querySelector('li.selected');
-            // if (oldSelected && oldLiSelected){
-            //     removeClass(oldSelected, 'selected');
-            //     addClass(oldSelected, 'hidden');
-            //     removeClass(oldLiSelected, 'selected');
-            //     // game.removeEventListener('click', () => loadGameDetail(game.id), false)
-            // }
-            
-            // //Showing selected game info
-            // let newSelected = document.querySelector(`#detail${gameLi.id}`);
-            // removeClass(newSelected, 'hidden');
-            // addClass(newSelected, 'selected');
-            // addClass(gameLi, 'selected');
-            // game.addEventListener('click', () => loadGameDetail(game.id), false);
-        
-            let list = document.querySelector('#info-preview');
-            
-            // let itemIndex = Array.from(list.children).indexOf(newSelected);
-            // console.log(itemIndex);
-            
-            // list.style.transform = `translateY(-${itemIndex * elementsHeight}px)`;
-        }
-    }
-
-    useEffect(async () => {
+    useEffect(() => {
         api.get(`/games?page=${page}`)
-            .then(res => {
-                const { results, ...info } = res.data;
-                setGames(results);
-                setPageInfo(info);
-
-                setSelectedGame(res.data.results[0]);
-                // console.log(firstGame);
-                // if(firstGame != undefined){
-                //     handleSelectGame(document.getElementById(firstGame.id))
-                // }
-                console.log()
+        .then(res => {
+            const { results, ...info } = res.data;
+            setGames(results);
+            setPageInfo(info);
+            setSelectedGame(res.data.results[0].id);
             });
-    }, [page]);
-
-    // useEffect(() => {
-    //     let firstGame = games[0];
-    //     console.log(firstGame);
-
-    //     if(firstGame){
-    //         let el = document.getElementById(firstGame.id).firstChild;
-    //         console.log(el);
-    //         handleSelectGame(el);
-    //     }
+        }, []);
         
-    // }, [games]);
+        useEffect(() => {
+            if(selectedGame){
+                changeBg(selectedGame);
 
-    
-    return(
-        <section id="all-games">
+                const [gameLi, article] = document.querySelectorAll('.selected');
+                translateEffect(gameLi, article);
+            }
+        }, [selectedGame])
+        
+        return(
+            <section id="all-games">
                 <ul id="game-list">
                     {games.map((game) => {
                         //Image Null correction
@@ -106,33 +67,38 @@ export default function Game(){
                         if(game.background_image == null){
                             icon = imgString.defaultBG;
                         }else {
-                            game.background_image = game.background_image.replace(".io/media", ".io/media/resize/640/-");    
-                            icon = game.background_image;
+                            icon = game.background_image.replace(".io/media", ".io/media/resize/640/-");
                         }
 
                         return(
                         <li 
-                            key={`${game.id}`}
+                            key={game.id}
                             className={
                                         selectedGame === game.id ?
                                         "game-item selected" :
                                         "game-item"
                                     }
                         >
-                            <img src={icon} alt='card' onClick={() => handleSelectGame(game.id)}/>
+                            <img src={icon} alt='card' onClick={() => setSelectedGame(game.id)}/>
                         </li>                         
                     )})}
                 </ul>
                 <div id="box-limit">
                 <section id="info-preview">
-                {games.map((game, index) => {
+                {games.map((game) => {
                     //Metacritic Null Correction
                     let metacrit = game.metacritic === null ? '-' : game.metacritic;
                     let genres = []; 
                     game.genres.map(genre => genres.push(genre.name));
 
                     return(
-                    <article key={game.id+'g'} id={'detail' + game.id} className={index === 0 ? "game-info-preview selected":"game-info-preview hidden"}>
+                    <article
+                        key={game.id}
+                        className={ game.id === selectedGame ?
+                                    "game-info-preview selected":
+                                    "game-info-preview hidden"
+                                }
+                    >
                         <h1>{game.name}</h1>
                         <div className="subinfo r-date">
                             <p>Release Date:</p>

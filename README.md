@@ -7,6 +7,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 [![Dribble Concept](https://img.shields.io/badge/ConceptArt-Playstation%205-006fcd?style=for-the-badge&logo=PlayStation)](https://dribbble.com/shots/11117563-PlayStation-5-Dashboard-Concept)
 [![Instagram Designer](https://img.shields.io/badge/Instagram-@sereda.dsgn-e4405F?style=for-the-badge&logo=Instagram)](https://www.instagram.com/sereda.dsgn)
 
+## Preview
+![](https://github.com/JosueFS/GamingWebsite/blob/master/reactapp.gif) 
+
 ## Requirements
 - [Node.js](https://nodejs.org/en/)
 - [ReactJS](https://reactjs.org/)

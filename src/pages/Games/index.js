@@ -1,14 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, prop } from 'react';
 import api from '../../services/api';
 
 import './style.css';
 
-export default function Game(){
+export default function Game({ show, fnShow }){
     const [games, setGames] = useState([]);
     const [selectedGame, setSelectedGame] = useState('');
     const [pageInfo, setPageInfo] = useState();
     const [page, setPage] = useState(1);
-
 
     const imgString = {
         check: 'https://i.dlpng.com/static/png/6658638_preview.png',
@@ -16,6 +15,12 @@ export default function Game(){
         fav: 'https://image.flaticon.com/icons/svg/541/541415.svg',
         nofav: 'https://image.flaticon.com/icons/svg/462/462092.svg',
         defaultBG: 'http://oiguassu.com.br/wp-content/themes/fox/images/placeholder.jpg'
+    }
+
+    console.log(show)
+
+    function handleOpenInfo(gameId){
+        fnShow(!show);
     }
 
     function translateEffect(li, article){
@@ -33,57 +38,59 @@ export default function Game(){
         
         infoList.style.transform = `translateY(-${infoIndex * elementsHeight}px)`;
     }
-
-    function changeBg(gameId){
-        let [t] = games.filter( (g) => (g.id === Number(gameId)));
-        document.body.style.backgroundImage = `url(${t.short_screenshots[1].image})`;
-    }
     
     useEffect(() => {
-        api.get(`/games?page=${page}`)
-        .then(res => {
+        api.get(`/games?page=${1}`)
+        .then( res => {
             const { results, ...info } = res.data;
-            setGames(results);
+            setGames(results)
             setPageInfo(info);
             setSelectedGame(res.data.results[0].id);
-            });
-        }, []);
-        
-        useEffect(() => {
-            if(selectedGame){
-                changeBg(selectedGame);
+        });
 
-                const [gameLi, article] = document.querySelectorAll('.selected');
-                translateEffect(gameLi, article);
-            }
-        }, [selectedGame])
+    }, []);
+    
+    useEffect(() => {
+        if(selectedGame){
+            let [t] = games.filter( (g) => (g.id === Number(selectedGame)));
+            document.body.style.backgroundImage = `url(${t.short_screenshots[1].image})`
+
+            const [gameLi, article] = document.querySelectorAll('.selected');
+            translateEffect(gameLi, article);
+        }
+    }, [selectedGame])
         
-        return(
-            <section id="all-games">
-                <ul id="game-list">
-                    {games.map((game) => {
-                        //Image Null correction
-                        let icon = '';
-                        if(game.background_image == null){
-                            icon = imgString.defaultBG;
-                        }else {
-                            icon = game.background_image.replace(".io/media", ".io/media/resize/640/-");
+    return(
+        <section id="all-games">
+            <ul id="game-list">
+                {games.map((game) => {
+                    //Image Null correction
+                    let icon = '';
+                    if(game.background_image == null){
+                        icon = imgString.defaultBG;
+                    }else {
+                        icon = game.background_image.replace(".io/media", ".io/media/resize/640/-");
+                    }
+
+                    return(
+                    <li 
+                        key={game.id}
+                        className={
+                                    selectedGame === game.id ?
+                                    "game-item selected" :
+                                    "game-item"
+                                }
+                        onClick={selectedGame === game.id ?
+                            () => handleOpenInfo(game.id) :
+                            () => setSelectedGame(game.id)
                         }
+                    >
+                        <img src={icon} alt='card' />
+                    </li>                         
+                )})}
+            </ul>
 
-                        return(
-                        <li 
-                            key={game.id}
-                            className={
-                                        selectedGame === game.id ?
-                                        "game-item selected" :
-                                        "game-item"
-                                    }
-                        >
-                            <img src={icon} alt='card' onClick={() => setSelectedGame(game.id)}/>
-                        </li>                         
-                    )})}
-                </ul>
-                <div id="box-limit">
+            <div id="box-limit">
                 <section id="info-preview">
                 {games.map((game) => {
                     //Metacritic Null Correction
@@ -116,7 +123,7 @@ export default function Game(){
                 )})}
 
                 </section>
-                </div>
-            </section>
+            </div>
+        </section>
     );
 }

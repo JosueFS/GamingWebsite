@@ -1,68 +1,45 @@
+# :video_game:Unamed Gaming Website
+### Project under development :construction:
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
 
-In the project directory, you can run:
+## Follow This Amazing Design
+# :video_game:Unamed Gaming Website
+### Project under development :construction:
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-### `yarn start`
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Follow This Amazing Design
+[![Dribbble Personal](https://img.shields.io/badge/Dribbble-Andrew%20Sereda-ea4c89?style=for-the-badge&logo=Dribbble)](https://dribbble.com/andrewsereda)
+[![Dribble Concept](https://img.shields.io/badge/ConceptArt-Playstation%205-006fcd?style=for-the-badge&logo=PlayStation)](https://dribbble.com/shots/11117563-PlayStation-5-Dashboard-Concept)
+[![Instagram Designer](https://img.shields.io/badge/Instagram-@sereda.dsgn-e4405F?style=for-the-badge&logo=Instagram)](https://www.instagram.com/sereda.dsgn)
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+## Requirements
+- [Node.js](https://nodejs.org/en/)
+- [ReactJS](https://reactjs.org/)
 
-### `yarn test`
+## API
+- [RAWG Video Games Database API (v1.0)](https://api.rawg.io/docs/)
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### 1. Clone this Repository
+```sh
+  $ git clone https://github.com/JosueFS/GamingWebsite.git
+```
+### 2. Install Packages and Run
 
-### `yarn build`
+```sh
+  # Install dependencies
+  $ npm install
+  
+  # Run Project
+  $ npm start
+  
+  ```
+## :memo: License
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+This project is under the GNU AGPL license to protect copyright of designer. See the **[LICENSE]** file **(LICENSE.md)** for more details.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+## :computer: Developed By
+[![LinkedIn Personal](https://img.shields.io/badge/LinkedIn-Josue%20Ferreira-0077B5?style=for-the-badge&logo=LinkedIn)](https://www.linkedin.com/in/jfds)
+[![Email](https://img.shields.io/badge/Gmail-josue.18rj@gmail.com-d14836?style=for-the-badge&logo=Gmail)](mailto:josue.18rj@gmail.com)
+[![Instagram Designer](https://img.shields.io/badge/Instagram-@josueftael-e4405F?style=for-the-badge&logo=Instagram)](https://www.instagram.com/josueftael)

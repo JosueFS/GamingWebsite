@@ -1,0 +1,78 @@
+#game-detail{
+    margin-top: 130px;
+    background-color: #2a2b33;
+    color: #FFF;
+    padding: 20px 70px;
+    display: flex;
+    flex-direction: column;
+}
+
+#game-detail .game-title {
+    display: flex;
+    flex-direction: row;
+}
+
+#game-detail .game-title img{
+    border-radius: 15px;
+    width: 170px;
+    height: 150px;
+    transform: translateY(-75%);
+}
+
+#game-detail .game-title figcaption{
+    font-size: 24px;
+    margin-left: 60px;
+    transform: translateY(-70%);
+}
+
+#game-detail .game-title figcaption span{
+    font-size: 20px;
+}
+
+.react-tabs {
+    display: flex;
+    flex-direction: row;
+    color: white;
+}
+
+.react-tabs__tab-list {
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    list-style-type: none;
+  }
+  
+  .react-tabs__tab {
+    width: 170px;
+    border-radius: 8px;
+    text-align: left;
+    padding: 10px;
+    cursor: pointer;
+    border: 2px solid transparent;
+}
+
+.react-tabs__tab--selected {
+    font-weight: bold;
+    border: 2px solid rgb(52, 52, 255);
+  }
+  
+  .react-tabs__tab--disabled {
+    cursor: pointer;
+  }
+  
+  /* .react-tabs__tab:focus {
+    
+  } */
+  
+  .react-tabs__tab:focus:after {
+    content: "";
+  }
+  
+  .react-tabs__tab-panel {
+    display: none;
+  }
+  
+  .react-tabs__tab-panel--selected {
+    display: inline;
+    margin-left: 50px;
+  }

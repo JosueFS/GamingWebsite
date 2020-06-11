@@ -7,7 +7,7 @@ export default function Game({ show, fnShow }){
     const [games, setGames] = useState([]);
     const [selectedGame, setSelectedGame] = useState('');
     const [pageInfo, setPageInfo] = useState();
-    const [page, setPage] = useState(1);
+    // const [page, setPage] = useState(1);
 
     const imgString = {
         check: 'https://i.dlpng.com/static/png/6658638_preview.png',

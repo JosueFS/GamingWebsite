@@ -1,4 +1,5 @@
-import React, { useState, useEffect, prop } from 'react';
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import api from '../../services/api';
 
 import './style.css';
@@ -73,20 +74,26 @@ export default function Game({ show, fnShow }){
                     }
 
                     return(
-                    <li 
+                    <Link
                         key={game.id}
-                        className={
-                                    selectedGame === game.id ?
-                                    "game-item selected" :
-                                    "game-item"
-                                }
+                        to={ selectedGame === game.id ?
+                            `/details/${game.id}` :
+                            ''
+                        } 
                         onClick={selectedGame === game.id ?
                             () => handleOpenInfo(game.id) :
                             () => setSelectedGame(game.id)
                         }
+                        className={
+                                    selectedGame === game.id ?
+                                    "game-item selected" :
+                                    "game-item"
+                        }
                     >
-                        <img src={icon} alt='card' />
-                    </li>                         
+                        <li >
+                            <img src={icon} alt='card' />
+                        </li>
+                    </Link>
                 )})}
             </ul>
 

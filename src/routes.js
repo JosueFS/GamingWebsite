@@ -17,7 +17,7 @@ const Routes = () => {
             <CSSTransition key={location.key} classNames="transition" timeout={500}>
                 <Switch location={location} >
                     <Route exact path='/' component={Main} />
-                    <Route path='/detail/:id' component={Detail} />
+                    <Route path='/details/:id' component={Detail} />
                 </Switch>
             </CSSTransition>
         </TransitionGroup>

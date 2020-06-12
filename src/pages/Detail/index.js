@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Tabs, TabList, Tab, TabPanel } from 'react-tabs';
 
@@ -8,7 +8,9 @@ import './styles.css';
 
 export default function Detail(){
     const { id } = useParams();
-    console.log('id')
+    console.log(id);
+
+    const [game, setGame] = useState({});
     
     // async function loadGameDetail(gameId){
     //     await api.get(`https://api.rawg.io/api/games/3498`)
@@ -20,6 +22,15 @@ export default function Detail(){
 
     // loadGameDetail();
 
+    useEffect(() => {
+        api.get(`https://api.rawg.io/api/games/${id}`)
+        .then(res => {
+            setGame(res.data);
+            console.log(res.data);
+            console.log(res.data.publishers[0].name)
+        });
+    }, []);
+
     return (
         <section id="game-detail">
             <figure className="game-title">
@@ -28,8 +39,8 @@ export default function Detail(){
                     alt=""
                 />
                 <figcaption>
-                    <h1>The Elder Scrolls V: Skyrim</h1>
-                    <span>Bethesda Softworks</span>
+                    <h1>{game.name}</h1>
+                    {/* <span>{game.publishers.map(first => first.name)}</span> */}
                 </figcaption>
             </figure>
             
@@ -41,7 +52,7 @@ export default function Detail(){
                     <Tab>Stores</Tab>
                 </TabList>
 
-                <TabPanel>1 Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto, minus. Officiis consectetur voluptatibus quas ut nam, accusantium harum iusto fuga, tenetur eligendi nesciunt magni ullam non reiciendis repellendus voluptatum doloribus.</TabPanel>
+                <TabPanel dangerouslySetInnerHTML={{__html: game.description}}></TabPanel>
                 <TabPanel>2 Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum maiores unde nobis aliquam distinctio ad, reprehenderit ipsum exercitationem, laborum, quisquam libero officia? Suscipit nostrum, provident consequatur deleniti nam adipisci id?</TabPanel>
                 <TabPanel>3 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis nam fugit porro id consequuntur tenetur libero quas veniam, impedit odio culpa, provident consectetur vero pariatur! Voluptatum repudiandae nam atque nesciunt?</TabPanel>
                 <TabPanel>4 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis nam fugit porro id consequuntur tenetur libero quas veniam, impedit odio culpa, provident consectetur vero pariatur! Voluptatum repudiandae nam atque nesciunt?</TabPanel>

@@ -18,8 +18,6 @@ export default function Game({ show, fnShow }){
         defaultBG: 'http://oiguassu.com.br/wp-content/themes/fox/images/placeholder.jpg'
     }
 
-    console.log(show)
-
     function handleOpenInfo(gameId){
         fnShow(!show);
     }

@@ -1,78 +1,141 @@
 #game-detail{
-    margin-top: 130px;
-    background-color: #2a2b33;
-    color: #FFF;
-    padding: 20px 70px;
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
+  margin-top: 130px;
+  background-color: #2a2b33;
+  color: #FFF;
+  padding: 20px 70px;
+  /* height: auto; */
 }
 
 #game-detail .game-title {
-    display: flex;
-    flex-direction: row;
+  display: flex;
+  flex-direction: row;
+  height: 200px;
+  overflow: visible;
+  z-index: 1;
+}
+
+#game-detail .game-title div{
+  position: relative;
+  width: 194px;
+  height: 194px;
+  overflow: hidden;
+  border-radius: 10px;
+  transform: translateY(-75%);
 }
 
 #game-detail .game-title img{
-    border-radius: 15px;
-    width: 170px;
-    height: 150px;
-    transform: translateY(-75%);
+  position: absolute;  
+  width: 150%;
+  height: 100%;
+  top: -10000px;
+  bottom: -9999px;
+  left: -9999px;
+  right: -9999px;
+  margin: auto;
 }
 
 #game-detail .game-title figcaption{
-    font-size: 24px;
-    margin-left: 60px;
-    transform: translateY(-70%);
+  font-size: 24px;
+  margin-left: 60px;
+  transform: translateY(-70%);
 }
 
 #game-detail .game-title figcaption span{
-    font-size: 20px;
+  font-size: 20px;
 }
 
 .react-tabs {
-    display: flex;
-    flex-direction: row;
-    color: white;
+  display: flex;
+  flex-direction: row;
+  color: white;
+  transform: translateY(-15%);
 }
 
 .react-tabs__tab-list {
-    display: flex;
-    flex-direction: column;
-    width: 200px;
-    list-style-type: none;
-  }
-  
-  .react-tabs__tab {
-    width: 170px;
-    border-radius: 8px;
-    text-align: left;
-    padding: 10px;
-    cursor: pointer;
-    border: 2px solid transparent;
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  height: 700px;
+  list-style-type: none;
+  z-index: 2;
+}
+
+.react-tabs__tab {
+  width: 170px;
+  border-radius: 8px;
+  text-align: left;
+  padding: 10px;
+  cursor: pointer;
+  border: 2px solid transparent;
 }
 
 .react-tabs__tab--selected {
-    font-weight: bold;
-    border: 2px solid rgb(52, 52, 255);
-  }
+  font-weight: bold;
+  border: 2px solid rgb(52, 52, 255);
+}
+
+.react-tabs__tab--disabled {
+  cursor: pointer;
+}
+
+/* .react-tabs__tab:focus {
   
-  .react-tabs__tab--disabled {
-    cursor: pointer;
-  }
-  
-  /* .react-tabs__tab:focus {
-    
-  } */
-  
-  .react-tabs__tab:focus:after {
-    content: "";
-  }
-  
-  .react-tabs__tab-panel {
-    display: none;
-  }
-  
-  .react-tabs__tab-panel--selected {
-    display: inline;
-    margin-left: 50px;
-  }
+} */
+
+.react-tabs__tab:focus:after {
+  content: "";
+}
+
+.react-tabs__tab-panel {
+  display: none;
+}
+
+.react-tabs__tab-panel::-webkit-scrollbar {
+  display: none;
+}
+.react-tabs__tab-panel::-webkit-scrollbar {
+  display: none;
+}
+
+.react-tabs__tab-panel--selected {
+  display: inline;
+  margin-left: 50px;
+}
+
+figure.achievements {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 10px;
+}
+
+figure.achievements h4 {
+
+}
+
+figure.achievements img{
+  width: 48px;
+  margin-right: 10px;
+}
+
+figure.achievements figcaption{
+  display: flex;
+  flex-direction: column;
+}
+
+figure.achievements figcaption span{
+  font-size: 12px;
+}
+
+img.ss{
+  width: 320px;
+  border-radius: 10px;
+  margin: 10px;
+}
+
+div:has(img.ss){
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}

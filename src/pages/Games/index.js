@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
+
 import api from '../../services/api';
 
 import './style.css';
 
-export default function Game({ show, fnShow }){
+export default function Game(){
     const [games, setGames] = useState([]);
     const [selectedGame, setSelectedGame] = useState('');
     const [pageInfo, setPageInfo] = useState();
@@ -16,10 +18,6 @@ export default function Game({ show, fnShow }){
         fav: 'https://image.flaticon.com/icons/svg/541/541415.svg',
         nofav: 'https://image.flaticon.com/icons/svg/462/462092.svg',
         defaultBG: 'http://oiguassu.com.br/wp-content/themes/fox/images/placeholder.jpg'
-    }
-
-    function handleOpenInfo(gameId){
-        fnShow(!show);
     }
 
     function translateEffect(li, article){
@@ -39,6 +37,7 @@ export default function Game({ show, fnShow }){
     }
     
     useEffect(() => {
+
         api.get(`/games?page=${1}`)
         .then( res => {
             const { results, ...info } = res.data;
@@ -57,8 +56,17 @@ export default function Game({ show, fnShow }){
             const [gameLi, article] = document.querySelectorAll('.selected');
             translateEffect(gameLi, article);
         }
-    }, [selectedGame])
-        
+    }, [selectedGame]);
+
+    const imageAnimation = {
+        in: {
+            scale: 1
+        },
+        out: {
+            scale: 0.5
+        }
+    }
+
     return(
         <section id="all-games">
             <ul id="game-list">
@@ -78,10 +86,7 @@ export default function Game({ show, fnShow }){
                             `/details/${game.id}` :
                             ''
                         } 
-                        onClick={selectedGame === game.id ?
-                            () => handleOpenInfo(game.id) :
-                            () => setSelectedGame(game.id)
-                        }
+                        onClick={() => setSelectedGame(game.id)}
                         className={
                                     selectedGame === game.id ?
                                     "game-item selected" :
@@ -89,7 +94,7 @@ export default function Game({ show, fnShow }){
                         }
                     >
                         <li >
-                            <img src={icon} alt='card' />
+                            <motion.img src={icon} alt='card' initial="out" animate="in" exit="out" variants={imageAnimation}/>
                         </li>
                     </Link>
                 )})}
@@ -99,7 +104,7 @@ export default function Game({ show, fnShow }){
                 <section id="info-preview">
                 {games.map((game) => {
                     //Metacritic Null Correction
-                    let metacrit = game.metacritic === null ? '-' : game.metacritic;
+                    let metacrit = game.metacritic || '-';
                     let genres = []; 
                     game.genres.map(genre => genres.push(genre.name));
 

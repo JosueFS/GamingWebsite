@@ -31,12 +31,16 @@ body{
     height: 100vh;
 }
 
-.transition-enter{
+.transition-appear, .transition-enter{
     opacity: 0;
     z-index: 1;
 }
 
-.transition-enter.transition-enter-active{
+.transition-appear-active, .transition-enter.transition-enter-active{
     opacity: 1;
-    transition: opacity 500ms ease-in;
+    transition: opacity 5000ms ease-in 5000ms;
+}
+
+.transition-exit {
+    opacity: 1;
 }

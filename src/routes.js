@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route, useLocation } from 'react-router-dom';
-import { TransitionGroup, CSSTransition } from 'react-transition-group';
+import { AnimatePresence } from 'framer-motion';
 
 import Main from './pages/Main';
 import Detail from './pages/Detail';
@@ -12,15 +12,12 @@ const Routes = () => {
     return (
     <BrowserRouter>
         <Header />
-
-        <TransitionGroup>
-            <CSSTransition key={location.key} classNames="transition" timeout={500}>
-                <Switch location={location} >
-                    <Route exact path='/' component={Main} />
-                    <Route path='/details/:id' component={Detail} />
-                </Switch>
-            </CSSTransition>
-        </TransitionGroup>
+        <AnimatePresence exitBeforeEnter>
+            <Switch key={location.pathname} >
+                <Route exact path='/' component={Main}/>
+                <Route path='/details/:id' component={Detail} />
+            </Switch>
+        </AnimatePresence>
     </BrowserRouter>   
     )};
 

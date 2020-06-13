@@ -1,20 +1,30 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import { motion } from "framer-motion";
 
 import './style.css';
-import Detail from '../Detail';
 import Games from '../Games';
 
 export default function Main(){
-    const [showGameDetail, setShowGameDetail] = useState(false);
-    
-    useEffect(() => {
-        console.log('Mudou');
-        console.log(showGameDetail);
-    }, [showGameDetail]);
+
+    const pageTransition = {
+        in: {
+            translateY: 0,
+            y: 0
+        },
+        out: {
+            translateY: '-100px',
+            y: '100vh'
+        }
+    }
 
     return (
-        <main id="main-page">
+        <motion.main
+            id="main-page"
+            initial="out"
+            animate="in"
+            exit="out"
+            variants={pageTransition}
+        >
             <nav id="navtop">
                 <a href="#!" >L1</a>
                 <a href="#!" >Store</a>
@@ -24,13 +34,9 @@ export default function Main(){
                 <a href="#!" >Settings</a>
                 <a href="#!" >R1</a>
             </nav>
-        
-        {
-            showGameDetail ?
-            <Detail show={showGameDetail} fnShow={setShowGameDetail} /> :
-            <Games show={showGameDetail} fnShow={setShowGameDetail} />
-        }
 
-        </main>
+            <Games />
+
+        </motion.main>
     );
 }
